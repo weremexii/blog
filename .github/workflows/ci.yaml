@@ -11,7 +11,7 @@ jobs:
         node-version:
           - 12.x
     steps:
-      - name: Checkout
+    - name: Checkout
       uses: actions/checkout@v2
       with:
         # 令 GitHub 在 git clone 和 git checkout 后「忘记」使用的 credentials。
