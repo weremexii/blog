@@ -21,11 +21,11 @@ jobs:
         # 如果之后需要以另外的身份（如你的 GitHub Bot）执行 git push 操作时（如部署到 GitHub Pages），必须设置为 false。
         persist-credentials: false
     - name: Checkout theme repo
-        uses: actions/checkout@v2
-        with:
-          repository: ${{ env.THEME_REPO }}
-          ref: ${{ env.THEME_BRANCH }}
-          path: themes/light
+      uses: actions/checkout@v2
+      with:
+        repository: ${{ env.THEME_REPO }}
+        ref: ${{ env.THEME_BRANCH }}
+        path: themes/light
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
