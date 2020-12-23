@@ -17,6 +17,8 @@ jobs:
         # 令 GitHub 在 git clone 和 git checkout 后「忘记」使用的 credentials。
         # 如果之后需要以另外的身份（如你的 GitHub Bot）执行 git push 操作时（如部署到 GitHub Pages），必须设置为 false。
         persist-credentials: false
+    - run: mkdir node_modules
+    - run: mkdir workers-site/node_modules
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
