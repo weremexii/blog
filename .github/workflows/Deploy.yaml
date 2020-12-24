@@ -4,7 +4,7 @@ on:
     branches:
       - master
 env:
-  THEME_REPO: tommy351/hexo-theme-light
+  THEME_REPO: hexojs/hexo-theme-light
   THEME_BRANCH: master
 jobs:
   build:
