@@ -98,38 +98,29 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: light
+theme: apollo
 theme_config:
   menu:
-    Home: /
-    Archives: archives
-    Friends: friends
-    
-  widgets:
-  - search
-  - category
-  - tag
+    Blog: /
+    Archive: /archives/
+    Telegram: http://t.me/mexii
+    GitHub: https://github.com/weremexii
+    Rss: /atom.xml
 
-  excerpt_link: Read More
+  favicon: /favicon.png
+  logo: /favicon.png
 
-  twitter:
-    username: weremexii
-    show_replies: false
-    tweet_count: 5
+# Comment
+# e.g disqus: seansun
+  disqus:
+  duoshuo:
 
-  addthis:
-    enable: true
-    pubid:
-    facebook: true
-    twitter: true
-    google: true
-    pinterest: true
+# Analytics
+# google-analytics:
+# ga: UA-xxxxxxxx-x
 
-  fancybox: true
-
-  google_analytics:
-  rss:
-
+# Copyright Infomation
+  startyear: 2020
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
