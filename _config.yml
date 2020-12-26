@@ -98,38 +98,7 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: light
-theme_config:
-  menu:
-    Home: /
-    Archives: archives
-    Friends: friends
-    
-  widgets:
-  - search
-  - category
-  - tag
-
-  excerpt_link: Read More
-
-  twitter:
-    username: weremexii
-    show_replies: false
-    tweet_count: 5
-
-  addthis:
-    enable: true
-    pubid:
-    facebook: true
-    twitter: true
-    google: true
-    pinterest: true
-
-  fancybox: true
-
-  google_analytics:
-  rss:
-
+theme: apollo
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
