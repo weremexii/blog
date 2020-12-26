@@ -1,0 +1,27 @@
+menu:
+    Blog: /
+    Archive: /archives/
+    Telegram: http://t.me/mexii
+    GitHub: https://github.com/weremexii
+    Rss: /atom.xml
+
+favicon: favicon.png
+logo: favicon.png
+avatar: favicon.png
+# Comment
+# e.g disqus: achjqz
+disqus:
+
+gitalk:
+    on: false
+    clientID: 
+    clientSecret: 
+    owner:
+    admin:
+    repo:       
+
+# Analytics
+# ga: UA-xxxxxxxx-x
+
+# Copyright Infomation
+startyear: 2020

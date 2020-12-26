@@ -1,0 +1,15 @@
+footer {
+    padding-bottom: 1px;
+    .copyright {
+        margin: 2em 0;
+        text-align: center;
+        p, a {
+            color: #aaa;
+            font-size: 14px;
+            font-weight: 100;
+        }
+        a:hover {
+            color: #888;
+        }
+    }
+}
