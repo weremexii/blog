@@ -54,7 +54,7 @@ gitalk:
 需用hexo命令生成
 
 ```bash
-hexo new page categories
+hexo new page category
 ```
 
 修改title和type
@@ -66,6 +66,8 @@ date: 2020-04-08 00:16:38
 type: category
 ---
 ```
+
+然后在`.config.yml`添加对应的menu,链接对应hexo生成命令的文章名即可
 
 ## 友链页面
 

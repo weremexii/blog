@@ -9,6 +9,10 @@ categories:
 - blog
 ---
 
+好像有了一台Github的虚拟机?
+
+<!--more-->
+
 ### 缘起
 
 苏卡卡巨佬的一篇博客
@@ -25,27 +29,35 @@ categories:
 
 新建一个目录,完成一系列初始化
 
-    hexo init
-    git init
+```bash
+hexo init
+git init
+```
 
 在Github新开一个repo,然后把远程仓库设置过去
 
-    // 这里没命令,我git只会图形界面操作和git push
+```bash
+// 这里没命令,我git只会图形界面操作和git push
+```
 
 对于主题,找一个简单一点的主题
 
 如果你用的是clone后编译的主题,先clone到themes目录下
 
-    git clone ... themes/theme-name //原来我还会git clone
+```bash
+git clone ... themes/theme-name //原来我还会git clone
+```
 
 这是我踩的第一个坑,注意告诉git这个主题是一个子模块,否则Action build的时候checkout部分会报错
 
-    // Google will tell you everything,可以查询相关命令完成
-    // 也可以自己新建一个`.gitmodules`文件,填入
+```bash
+// Google will tell you everything,可以查询相关命令完成
+// 也可以自己新建一个`.gitmodules`文件,填入
 
-    [submodule "hexo-theme-light"]
+[submodule "hexo-theme-light"]
 	path = themes/light
 	url = https://github.com/tommy351/hexo-theme-light
+```
 
 记得配置`_config.yml`,然后`hexo g`,`hexo s`检查一下是否成功生成站点
 

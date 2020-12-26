@@ -1,9 +1,11 @@
 menu:
     Blog: /
     Archive: /archives/
-    Telegram: http://t.me/mexii
+    Category: /category/
+    Frineds: /link/
     GitHub: https://github.com/weremexii
     Rss: /atom.xml
+    
 
 favicon: favicon.jpg
 logo: favicon.jpg

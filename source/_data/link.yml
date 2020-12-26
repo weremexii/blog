@@ -1,0 +1,16 @@
+friends:
+  class_name: Friends
+  link_list:
+    1:
+      name: OrangeX4
+      link: https://orangex4.cool
+      avatar: http://8.131.55.166/img/icon.jpg
+      bio: 技术宅拯救世界!
+singleway:
+  class_name: Single Way
+  link_list:
+    1:
+      name: who
+      link: https://baidu.com
+      avatar: 
+      bio: 百度老贼
