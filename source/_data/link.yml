@@ -6,6 +6,11 @@ friends:
       link: https://orangex4.cool
       avatar: http://8.131.55.166/img/icon.jpg
       bio: 技术宅拯救世界!
+    2:
+      name: North Area
+      link: https://www.northarea.tech/
+      avatar: https://avatars0.githubusercontent.com/u/3104820
+      bio: 美好的日本留学生?
 singleway:
   class_name: Single Way
   link_list:
