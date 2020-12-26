@@ -2,7 +2,7 @@ name = "my-static-site"
 type = "webpack"
 account_id = "fb019aba69024ac5d0af1fdf4a8653f0"
 workers_dev = false
-route = "blog.mexii.one/*"
+route = "track.mexii.one/*"
 zone_id = "1ddb0704d20d2a822020664d9c3a22ae"
 
 [site]

@@ -13,7 +13,7 @@ timezone: Asia/Shanghai
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://example.com/child' and root as '/child/'
-url: https://blog.mexii.one
+url: https://track.mexii.one
 root: /
 permalink: :year/:month/:title/
 permalink_defaults:
