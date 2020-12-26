@@ -10,7 +10,7 @@ singleway:
   class_name: Single Way
   link_list:
     1:
-      name: who
-      link: https://baidu.com
-      avatar: 
-      bio: 百度老贼
+      name: Sukka's Blog
+      link: https://blog.skk.moe
+      avatar: https://cdn.jsdelivr.net/npm/skx@0.2.3/avatar/512x512.png
+      bio: 童话只美在真实却从不续写

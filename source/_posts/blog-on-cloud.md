@@ -50,7 +50,7 @@ git clone ... themes/theme-name //原来我还会git clone
 
 这是我踩的第一个坑,注意告诉git这个主题是一个子模块,否则Action build的时候checkout部分会报错
 
-```bash
+```.gitmodules
 // Google will tell you everything,可以查询相关命令完成
 // 也可以自己新建一个`.gitmodules`文件,填入
 
