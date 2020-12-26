@@ -1,0 +1,27 @@
+extends partial/layout
+
+block container
+    if page.type === 'category'
+      .category  
+          h2.title 
+              != page.title
+          != list_categories()
+    else if page.type === 'friends'
+      .flink
+        if site.data.link
+          each i in site.data.link
+            h2= i.class_name
+            .post-cards
+              .md-links
+                each item in i.link_list
+                  .md-links-item
+                    a(href=item.link  title=item.name target="_blank")
+                      img(src=item.avatar onerror=`this.onerror=null;this.src='` + url_for(theme.avatar) + `'` alt=item.name )
+                      .md-links-title= item.name 
+                      .md-links-des= item.descr    
+block pagination
+    include mixins/paginator
+    +home()
+
+block copyright
+    include partial/copyright
