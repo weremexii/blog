@@ -99,6 +99,28 @@ ignore:
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 theme: apollo
+theme_config:
+  menu:
+    Blog: /
+    Archive: /archives/
+    Telegram: http://t.me/mexii
+    GitHub: https://github.com/weremexii
+    Rss: /atom.xml
+
+  favicon: /favicon.png
+  logo: /favicon.png
+
+# Comment
+# e.g disqus: seansun
+  disqus:
+  duoshuo:
+
+# Analytics
+# google-analytics:
+# ga: UA-xxxxxxxx-x
+
+# Copyright Infomation
+  startyear: 2020
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:

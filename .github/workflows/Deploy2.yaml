@@ -1,0 +1,50 @@
+name: My Hexo Blog
+on:
+  push:
+    branches:
+      - npmjs-apollo
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version:
+          - 12.x
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        # 令 GitHub 在 git clone 和 git checkout 后「忘记」使用的 credentials。
+        # 如果之后需要以另外的身份（如你的 GitHub Bot）执行 git push 操作时（如部署到 GitHub Pages），必须设置为 false。
+        persist-credentials: false
+    - name: Checkout theme repo
+      uses: actions/checkout@v2
+      with:
+        repository: ${{ env.THEME_REPO }}
+        ref: ${{ env.THEME_BRANCH }}
+        path: themes/light
+    # 缓存 node_modules，缓存机制参见 GitHub 文档：https://help.github.com/en/actions/configuring-and-managing-workflows/caching-dependencies-to-speed-up-workflows
+    #- name: Cache node_modules
+    #  uses: actions/cache@v1 # 使用 GitHub 官方的缓存 Action。
+    #  env:
+    #    cache-name: hexo-node-modules
+    #    with:
+    #    path: node_modules
+    #    key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('package-lock.json') }} # 使用 package-lock.json 的 Hash 作为缓存的 key。也可以使用 package.json 代替
+    ## Wrangler 在构建时会在 workers-site 目录下执行 npm i，因此也要缓存这里的 node_modules
+    #- name: Cache workers-site/node_modules
+    #  uses: actions/cache@v1
+    #  env:
+    #    cache-name: workers-site-node-modules
+    #  with:
+    #    path: workers-site/node_modules
+    #    key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('workers-site/package-lock.json') }}
+    - run: npm i # 执行 Hexo 的依赖安装
+    # 完成 npm i 后，hexo 已经被链接到 node_modules 下的 bin 目录、并被注册在 Node.js 的 $PATH 中
+    # Hexo 博客的 package.json 中默认注册了这些 script：clean/build/deploy/server
+    # 因此，在目录下执行 npm run build 等同于执行 hexo g，但是不需要全局安装 hexo-cli
+    - run: npm run build
+    - name: Deploy to Cloudflare Workers
+      uses: cloudflare/wrangler-action@1.1.0
+      with:
+        apiToken: ${{ secrets.CF_WORKERS_TOKEN }}
