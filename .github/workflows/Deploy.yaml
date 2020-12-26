@@ -4,7 +4,7 @@ on:
     branches:
       - master
 env:
-  THEME_REPO: hexojs/hexo-theme-light
+  THEME_REPO: weremexii/hexo-theme-apollo
   THEME_BRANCH: master
 jobs:
   build:
