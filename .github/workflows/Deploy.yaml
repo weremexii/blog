@@ -1,4 +1,4 @@
-name: My Hexo Blog
+name: deploy
 on:
   push:
     branches:
