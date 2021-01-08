@@ -72,15 +72,21 @@ git init
 
 #### 配置wrangler
 
-然后是配置wrangler
+然后是配置wrangler,具体看skk的博客就可以了
 
-当初我用这个CLI最麻烦的问题,是不知道为什么安装时下载极慢,官方支持manual安装,下载可执行文件然后扔到某个$PATH路径下
+当初我用这个CLI最麻烦的问题,是不知道为什么安装时下载极慢,但官方支持manual安装,下载可执行文件然后扔到某个$PATH路径下就可以开始使用了
 
-具体看skk的博客就可以了,cloudflare的命令行工具一堆emoji,总有点出戏
+cloudflare的命令行工具一堆emoji,总有点出戏
 
-要注意的一点是,如果你要使用自己的域名,就得将一个二级域名交由cloudflare管理,那个`zone id`就是指向你的这个域名的;`route`也是在这种情况下才需要的参数
+要注意的一点是,如果你要使用自己的域名,
 
-如果不需要的话就是直接使用`wrangler.toml`下的`name`参数和你的子域形成网址;登陆cloudflare可以查看到网址
+1. 需要将一个域名交由cloudflare管理(设置`Nameserver`)
+
+2. 在域名管理页面的DNS配置页面,给要使用的域名添加记录(可以指向任意地址,推荐添加CNAME记录指向Workers的dev子域地址),代理状态选择`已代理`
+
+3. 在域名管理页面找到`zone id`,填入配置文件`wrangler.toml`,并配置`route:[third-level-domain]/*`(自行替换相关字段)
+
+如果不需要的话就是直接使用`wrangler.toml`下的`name`参数和你的dev子域形成网址;登陆cloudflare可以查看到网址
 
 配置好后,试着预览一次,预览成功就可以开始配置GitHub Action了
 
