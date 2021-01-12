@@ -10,7 +10,7 @@ categories:
 desc: Homebrew安装nodejs报错/usr/local/share/systemtap/tapset is not writable
 ---
 
-记录一下
+(´；ω；｀)
 
 <!--more-->
 
@@ -62,7 +62,7 @@ drwxr-xr-x   2 root  wheel   68 Oct 24 20:17 tapset
     ```bash
     $ sudo dscl . -delete /Group/wheel GroupMembership [username]
     ```
-5. 恢复原始文件夹的读写权限
+5. 恢复文件夹的原始读写权限
 
     ```bash
     $ sudo chmod -R 755 /usr/local/share/systemtap/
