@@ -5,8 +5,13 @@ tags:
 - emulator
 - macOS
 categories: 
-- software
+- guide
+desc: 获取Fusion 12序列号
 ---
+
+可以白嫖的macOS虚拟机软件
+
+<!--more-->
 
 ### 缘起
 

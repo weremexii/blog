@@ -6,7 +6,7 @@ tags:
 - vscode
 - C++
 categories:
-- config
+- develop
 desc: VSCode来写cpp文件并不是C++编程首选,但是这不妨碍我们折腾它的编译与调试
 ---
 
