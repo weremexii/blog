@@ -10,7 +10,7 @@ categories:
 desc: Python学习笔记,主要关注于一些奇怪的方面
 ---
 
-### =
+### 关于操作符 =
 
 右边是
 
@@ -64,3 +64,31 @@ Reference:[理解Python的Iterable和Iterator](kawabangga.com/posts/2772kawabang
 + `list()`可以根据`Iterable`对象生成列表
 + ...
 
+### 符号表
+
+### 示例代码
+
+#### 切片的使用
+
++ 字符串循环移动
+
+	将传入的字符串s按照flag (1代表循环左移，2代表循环右移)的要求左移或右移n位，结果 返回移动后的字符串，若n超过字符串长度则结果返回-1
+
+	```python
+	def moveSubstr(s, flag, n): 
+	if n > len(s):
+		return -1 else:
+	if flag == 1:
+		return s[n:] + s[:n]
+	else:
+		return s[-n:]+ s[:-n]
+
+	 
+	if __name__ == "__main__":
+		s, flag, n = input("enter the 'string,flag,n': ").split(',')
+		result = moveSubstr(s, int(flag), int(n)) 
+	if result != -1:
+		print(result) 
+	else:
+		print('the n is too large')
+	```

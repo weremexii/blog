@@ -13,4 +13,14 @@ link(rel="stylesheet", href=url_for("css/apollo.css"))
 
 - var xml = config.url + theme.menu.Rss
     link(rel="search", type="application/opensearchdescription+xml", href=xml, title=config.title)
-    
+
+//- Analytics tracking
+- var ga = theme.ga
+if ga
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    script(async, src='https://www.googletagmanager.com/gtag/js?id=' + ga)
+    script
+        | window.dataLayer = window.dataLayer || [];
+        | function gtag(){dataLayer.push(arguments);}
+        | gtag('js', new Date());
+        | gtag('config', '#{ga}');

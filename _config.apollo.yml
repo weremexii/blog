@@ -3,7 +3,7 @@ menu:
     Archive: /archives/
     Category: /category/
     Frineds: /link/
-    GitHub: 
+    GitHub: https://github.com/weremexii
     Rss: /atom.xml
     
 
@@ -23,7 +23,7 @@ gitalk:
     repo:       
 
 # Analytics
-# ga: 
+ga: G-Z96GGVW8MP
 
 # Copyright Infomation
 startyear: 2020

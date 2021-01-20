@@ -1,13 +1,2 @@
 //- LaTex
 script(async src="//cdn.bootcss.com/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-e/4/LvThKH1gwzXhdbY2AsjR3rm7LHWyhIG5C0jiRfn8AN2eTN5ILeztWw0H9jmN" crossorigin="anonymous")
-
-//- Analytics tracking
-- var ga = theme.ga
-if ga
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    script(async, src='https://www.googletagmanager.com/gtag/js?id=' + ga)
-    script
-        | window.dataLayer = window.dataLayer || [];
-        | function gtag(){dataLayer.push(arguments);}
-        | gtag('js', new Date());
-        | gtag('config', '#{ga}');
