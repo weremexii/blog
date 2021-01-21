@@ -49,7 +49,7 @@ desc: Python学习笔记,主要关注于一些奇怪的方面
 
 python里的两种类型,从翻译角度来讲,前者是可迭代对象,后者是迭代器
 
-Reference:[理解Python的Iterable和Iterator](kawabangga.com/posts/2772kawabangga.com/posts/2772)
+Reference:[理解Python的Iterable和Iterator](https://www.kawabangga.com/posts/2772)
 
 在python中,大部分使用的对象是`Iterable`,它相对于`Iterator `的优点是可以多次使用,多次生成迭代器.这对应的是`Iterator`的特性,只能遍历一次,不可重复使用.
 
