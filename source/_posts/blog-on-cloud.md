@@ -1,6 +1,6 @@
 ---
 title: 用GitHub Action部署一个Workers站点
-date: 2020-12-23 21:30:02
+date: 2021-03-21 13:49:00
 tags:
 - cloudflare
 - action
@@ -28,55 +28,52 @@ desc: 使用GitHub Action持续集成部署在Cloudflare Workers上的Hexo博客
 
 我之前写的博文很少,加之使用了一个需要配置很久的主题,从零开始配置hexo想必要比将已有的博客搬到云端要来得简单
 
-新建一个目录,完成一系列初始化
+首先完成一系列初始化
 
-```bash
-hexo init
-git init
-```
++ 安装git, nodejs
++ 使用npm或者yarn安装hexo-cli
++ 新建并初始化一个目录
+
+	```bash
+	mkdir myblog && cd myblog
+	hexo init
+	git init
+	```
 
 在GitHub新开一个repo,然后把远程仓库设置过去
 
 ```bash
-// 这里没命令,我git只会使用vscode的图形界面操作和git push
+git remote add <name> <url>
 ```
 
 #### submodule问题
 
-对于主题,找一个简单一点的主题,避重就轻嘛
+对于主题,我选择找一个简单一点的,避重就轻方便配置,并且将它设置为一个submodule
 
-这是我踩的第一个坑,注意告诉git这个主题repo是一个子模块,否则Action build的时候checkout部分会报错
-
-原因我不是特别清楚,出现这个情况说明push到GitHub时,GitHub把themes文件夹下面的主题当作一个submodule,如果没有同时push那个`.gitmodule`文件,在checkout部分就会报错
-
-一开始我是顺着这个原因,创建了内容如下的文件
-
-```.gitmodules
-// Google will tell you everything,可以查询相关命令完成
-// 也可以自己新建一个`.gitmodules`文件,填入
-
-[submodule "hexo-theme-light"]
-	path = themes/light
-	url = https://github.com/tommy351/hexo-theme-light
+```bash
+// 格式
+// git submodule add <url> <relative-path>
+// 我是这样的
+git submodule add git@github.com:weremexii/hexo-theme-apollo.git theme/apollo
 ```
 
-记得配置`_config.yml`,然后`hexo g`,`hexo s`检查一下是否成功生成站点
-
-后来我换了一个差不多已经停止maintain的主题,干脆直接删掉了主题repo下面的.git文件夹,这样push到GitHub时,GitHub不会把它当作一个submodule了
+注意在配置GitHub Action的时候,`actions/checkout@v2`需要配置`submodules: true`参数后才能拉取主题源码
 
 #### 主题配置问题
 
-查阅Hexo的文档可知,默认情况下网站目录下的`_config.yml`文件的`theme_config`节点配置会覆盖主题文件夹下的配置,结果是有些主题也做到了反向覆盖...
+查阅Hexo的文档可知,默认情况下网站目录下的`_config.yml`文件的`theme_config`节点配置或者网站目录下的`_config.<theme_name>.yml`配置会覆盖主题文件夹下的配置,结果是有些主题却做到了反向覆盖...
 
-最好还是自己fork一份主题吧.
+选择主题的时候要阅读配置文档
 
-#### 配置wrangler
+#### 配置本地wrangler
 
 然后是配置wrangler,具体看skk的博客就可以了
 
-当初我用这个CLI最麻烦的问题,是不知道为什么安装时下载极慢,但官方支持manual安装,下载可执行文件然后扔到某个$PATH路径下就可以开始使用了
+<s>当初我用这个CLI最麻烦的问题,是不知道为什么安装时下载极慢,但官方支持manual安装,下载可执行文件然后扔到某个$PATH路径下就可以开始使用了</s>
 
-cloudflare的命令行工具一堆emoji,总有点出戏
+这种问题要怪自己的网络环境和包管理配置
+
+<s>cloudflare的命令行工具一堆emoji,总有点出戏</s>
 
 要注意的一点是,如果你要使用自己的域名,
 
@@ -94,11 +91,25 @@ cloudflare的命令行工具一堆emoji,总有点出戏
 
 Action的配置文件是`.github/workflows/`下的任意`yaml`文件,每个`yaml`文件都会在符合条件的时候执行
 
-查阅GitHub的文档或者看现成的配置文件都可以看懂Action是怎样照这配置文件执行的,需要注意的是,checkout环节会把repo clone到虚拟机工作目录下,如果有多个repo,就要进行多次checkout
+查阅GitHub的文档或者看现成的配置文件(比如我的或者skk的)都可以看懂Action是怎样照这配置文件执行的,需要注意的是,checkout环节会把repo clone到虚拟机工作目录下
 
-在配置供Action将网站部署到Workers的secrets时,要注意,GitHub现在提供了两类secrets,要在setting中使用repo secrets
+在配置`cloudflare/wrangler-action`的`API_Token`时,要注意,GitHub现在提供了两类secrets,要在setting中使用repo secrets
 
 在本地写完配置文件,检查无误后,push到GitHub即可
+
+#### 无密化
+
+在上面的配置过程中我们其实把部署到workers需要的`account_id`和`zone_id`明文写在了文件里,这样多多少少有泄露的风险,好在`cloudflare/wrangler-action`工作的时候支持从环境变量中读取这两个参数
+
+在Action配置`on`字段之后,添加env字段.注意双大括号内的变量名称要和你设置的secrets一致
+
+```yml
+env:
+  CF_ACCOUNT_ID: ${{ secrets.CF_WORKERS_ACCOUNT_ID }}
+  CF_ZONE_ID: ${{ secrets.CF_WORKERS_ZONE_ID }}
+```
+
+删除`wrangler.toml`中相关字段后测试一下
 
 ### Summary
 
@@ -108,8 +119,14 @@ Action的配置文件是`.github/workflows/`下的任意`yaml`文件,每个`yaml
 
 当然这只是CI的初衷之一.
 
+[将 Hexo 部署到 Cloudflare Workers Site 上的趟坑记录](https://blog.skk.moe/post/deploy-blog-to-cf-workers-site/)
+
 [利用 GitHub Actions 自动部署 Hexo 博客](https://sanonz.github.io/2020/deploy-a-hexo-blog-from-github-actions/)
+
+[使用Actions+子模块+ZEIT搭建静态博客](https://blog.fun4go.top/%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2%E6%96%B9%E6%A1%88.html)
 
 [GitHub Action Docs](https://docs.github.com/cn/free-pro-team@latest/actions)
 
 [Cloudflare Workers Docs](https://workers.cloudflare.com/docs)
+
+[Cloudflare Wrangler Configuration](https://developers.cloudflare.com/workers/cli-wrangler/configuration)
