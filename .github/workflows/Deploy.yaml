@@ -3,9 +3,9 @@ on:
   push:
     branches:
       - master
-#env:
-#  THEME_REPO: weremexii/hexo-theme-apollo
-#  THEME_BRANCH: master
+env:
+  CF_ACCOUNT_ID: ${{ secrets.CF_WORKERS_ACCOUNT_ID }}
+  CF_ZONE_ID: ${{ secrets.CF_WORKERS_ZONE_ID }}
 jobs:
   build:
     runs-on: ubuntu-latest
