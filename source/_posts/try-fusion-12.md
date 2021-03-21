@@ -1,6 +1,7 @@
 ---
 title: 获取Fusion 12序列号
 date: 2020-12-23 20:59:39
+updated: 2020-12-23 20:59:39
 tags: 
 - emulator
 - macOS

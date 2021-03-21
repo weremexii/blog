@@ -1,6 +1,7 @@
 ---
 title: 记macOS下Homebrew的一个权限报错问题
 date: 2021-01-12 16:45:23
+updated: 2021-01-12 16:45:23
 tags:
 - macOS
 - dscl
