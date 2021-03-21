@@ -1,6 +1,7 @@
 ---
 title: 用GitHub Action部署一个Workers站点
-date: 2021-03-21 13:49:00
+date: 2020-12-23 13:30:02
+updated: 2021-03-21 14:25:00
 tags:
 - cloudflare
 - action
@@ -15,6 +16,8 @@ desc: 使用GitHub Action持续集成部署在Cloudflare Workers上的Hexo博客
 好像有了一台速度飞起的服务器?
 
 <!--more-->
+
+> 
 
 ### 缘起
 
