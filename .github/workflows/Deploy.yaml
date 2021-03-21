@@ -25,12 +25,6 @@ jobs:
     # 将子模块更新到最新
     - name: Update submodule
       run: git submodule update --remote
-    - name: commit for submodule
-        uses: github-actions-x/commit@v2.1
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          push-branch: 'master'
-          commit-message: 'publish'
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
