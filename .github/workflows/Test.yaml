@@ -1,11 +1,8 @@
-name: My Hexo Blog
+name: Build Test without deploy
 on:
   push:
     branches:
-      - npmjs-apollo
-env:
-  THEME_REPO: weremexii/hexo-theme-apollo
-  THEME_BRANCH: master
+      - test
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -19,13 +16,13 @@ jobs:
       with:
         # 令 GitHub 在 git clone 和 git checkout 后「忘记」使用的 credentials。
         # 如果之后需要以另外的身份（如你的 GitHub Bot）执行 git push 操作时（如部署到 GitHub Pages），必须设置为 false。
-        persist-credentials: false
-    - name: Checkout theme repo
-      uses: actions/checkout@v2
-      with:
-        repository: ${{ env.THEME_REPO }}
-        ref: ${{ env.THEME_BRANCH }}
-        path: themes/light
+        # persist-credentials: false
+    #- name: Checkout theme repo
+    #  uses: actions/checkout@v2
+    #  with:
+    #    repository: ${{ env.THEME_REPO }}
+    #    ref: ${{ env.THEME_BRANCH }}
+    #    path: themes/light
     # 缓存 node_modules，缓存机制参见 GitHub 文档：https://help.github.com/en/actions/configuring-and-managing-workflows/caching-dependencies-to-speed-up-workflows
     #- name: Cache node_modules
     #  uses: actions/cache@v1 # 使用 GitHub 官方的缓存 Action。
@@ -47,7 +44,7 @@ jobs:
     # Hexo 博客的 package.json 中默认注册了这些 script：clean/build/deploy/server
     # 因此，在目录下执行 npm run build 等同于执行 hexo g，但是不需要全局安装 hexo-cli
     - run: npm run build
-    - name: Deploy to Cloudflare Workers
-      uses: cloudflare/wrangler-action@1.1.0
-      with:
-        apiToken: ${{ secrets.CF_WORKERS_TOKEN }}
+    #- name: Deploy to Cloudflare Workers
+    #  uses: cloudflare/wrangler-action@1.1.0
+    #  with:
+    #    apiToken: ${{ secrets.CF_WORKERS_TOKEN }}
