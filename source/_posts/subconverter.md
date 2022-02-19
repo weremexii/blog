@@ -10,9 +10,17 @@ categories:
 
 配置自己部署的 subconverter 一直是件麻烦事，写这篇文章来大致记录一下思路，顺带介绍一些 macOS 上用的代理路由软件和一些零散配置
 
+---
+
+tindy2013/subconverter - GitHub
+https://github.com/tindy2013/subconverter
+
+---
+
 <!--more-->
 
 ### subconverter
+
 [Github Repo](https://github.com/tindy2013/subconverter)
 [Docs_cn](https://github.com/tindy2013/subconverter/blob/master/README-cn.md)
 
