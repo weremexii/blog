@@ -1,0 +1,8 @@
+name = "my-static-site"
+main = "src/index.ts"
+workers_dev = false
+route = "blog.mexii.dev/*"
+compatibility_date = "2022-06-06"
+
+[site]
+bucket = "./public"
