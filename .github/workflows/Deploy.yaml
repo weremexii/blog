@@ -4,15 +4,14 @@ on:
     branches:
       - master
 env:
-  CF_ACCOUNT_ID: ${{ secrets.CF_WORKERS_ACCOUNT_ID }}
-  CF_ZONE_ID: ${{ secrets.CF_WORKERS_ZONE_ID }}
+  CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
 jobs:
   build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version:
-          - 12.x
+          - 16
     steps:
     - name: Checkout
       uses: actions/checkout@v2
@@ -26,7 +25,7 @@ jobs:
     - name: Update submodule
       run: git submodule update --remote
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
+      uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
     # 缓存 node_modules，缓存机制参见 GitHub 文档：https://help.github.com/en/actions/configuring-and-managing-workflows/caching-dependencies-to-speed-up-workflows
@@ -53,4 +52,4 @@ jobs:
     - name: Deploy to Cloudflare Workers
       uses: cloudflare/wrangler-action@1.1.0
       with:
-        apiToken: ${{ secrets.CF_WORKERS_TOKEN }}
+        apiToken: ${{ secrets.CF_WORKERS_API_TOKEN }}
