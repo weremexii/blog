@@ -1,8 +1,0 @@
-name = "my-static-site"
-type = "webpack"
-workers_dev = false
-route = "track.mexii.one/*"
-
-[site]
-bucket = "./public"
-entry-point = "workers-site"
